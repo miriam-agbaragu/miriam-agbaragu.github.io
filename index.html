@@ -9,185 +9,67 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root {
+    :root{
       --bg:#0b1020;--bg-2:#0e1530;--card:#121a3b;--text:#e6e9f5;--muted:#a9b0c6;--brand:#7c9cf5;--brand-2:#5fe6c5;--ring: rgba(124,156,245,.6);--shadow:0 10px 30px rgba(0,0,0,.45);
     }
-    * { box-sizing:border-box }
-    html, body { margin:0 }
-    body {
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
-      background:linear-gradient(180deg,var(--bg),var(--bg-2));
-      color:var(--text);
-      line-height:1.6;
-    }
-    a { color:inherit; text-decoration:none }
-    .wrap { max-width:1080px; margin:0 auto; padding:28px }
-    header {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      flex-wrap: wrap;
-    }
-    .logo {
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-    .avatar {
-      width:80px;
-      height:80px;
-      border-radius:50%;
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg-2));color:var(--text);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1080px;margin:0 auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .logo{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+    .avatar{
+      width:clamp(60px, 15vw, 100px);
+      height:clamp(60px, 15vw, 100px);
+      border-radius:999px;
       border:2px solid var(--brand);
       box-shadow:0 0 0 6px rgba(124,156,245,.15);
-      background:#333;
-      background-size:cover;
+      background:url('./my-photo.jpg') center/cover no-repeat;
       flex-shrink:0;
     }
-    .name { font-size:1.25rem; font-weight:700 }
-    .tag { font-size:.95rem; color:var(--muted) }
-    .nav { display:flex; gap:14px; flex-wrap: wrap; }
-    .nav a {
-      padding:10px 14px;
-      border-radius:12px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.05);
-    }
-    .nav a:hover { border-color:rgba(255,255,255,.15) }
-
-    /* Hero section with photo */
-    .hero {
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      min-height:80vh;
-      gap:24px;
-      padding:28px;
-      border-radius:24px;
-      background:radial-gradient(1000px 450px at 80% -10%, rgba(127, 221, 203, .2), transparent 60%),
-                 radial-gradient(900px 400px at -10% -20%, rgba(124, 156, 245, .22), transparent 60%),
-                 linear-gradient(160deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow:var(--shadow);
-      text-align: center;
-    }
-    .hero-content {
-      display:flex;
-      flex-direction:column;
-      gap:20px;
-      align-items:center;
-    }
-    .hero-text { max-width:600px }
-    .hero h1 {
-      font-size:clamp(1.6rem,3vw,2.4rem);
-      line-height:1.2;
-      margin:0 0 10px;
-    }
-    .hero p { margin:0 0 14px; color:var(--muted) }
-    .hero-photo {
-      width:100%;
-      max-width:350px;
-      height:auto;
-      object-fit:cover;
-      border-radius:0; /* rectangular */
-    }
-    @media (min-width:768px) {
-      .hero-content {
-        flex-direction:row;
-        align-items:center;
-        text-align:left;
-      }
-      .hero-text { flex:1 }
-      .hero-photo { max-width:300px }
-    }
-
-    .badges { display:flex; flex-wrap:wrap; gap:10px; margin-top:10px }
-    .badge {
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 12px;
-      border-radius:999px;
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.08);
-      font-size:.9rem;
-    }
-    .cta { display:flex; gap:12px; margin-top:18px; flex-wrap:wrap }
-    .btn {
-      padding:12px 16px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.12);
-      background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));
-      backdrop-filter:blur(6px);
-      font-weight:600;
-    }
-    .btn:hover { border-color:rgba(255,255,255,.24) }
-    .btn.primary {
-      background:linear-gradient(180deg,var(--brand),#597bf5);
-      border-color:transparent;
-      color:#0b1020;
-    }
-    .section { margin:44px 0 }
-    .section h2 { font-size:1.35rem; margin:0 0 16px }
-    .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:18px }
-    .card {
-      grid-column:span 12;
-      padding:20px;
-      border-radius:20px;
-      border:1px solid rgba(255,255,255,.08);
-      background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
-      box-shadow:var(--shadow);
-    }
+    .name{font-size:1.25rem;font-weight:700}
+    .tag{font-size:.95rem;color:var(--muted)}
+    .nav{display:flex;gap:14px;flex-wrap:wrap}
+    .nav a{padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.05)}
+    .nav a:hover{border-color:rgba(255,255,255,.15)}
+    .hero{margin:36px 0;padding:28px;border-radius:24px;background:radial-gradient(1000px 450px at 80% -10%, rgba(127, 221, 203, .2), transparent 60%),
+      radial-gradient(900px 400px at -10% -20%, rgba(124, 156, 245, .22), transparent 60%),
+      linear-gradient(160deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)}
+    .hero h1{font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.2;margin:0 0 10px}
+    .hero p{margin:0 0 14px;color:var(--muted)}
+    .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:.9rem}
+    .cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .btn{padding:12px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));backdrop-filter:blur(6px);font-weight:600}
+    .btn:hover{border-color:rgba(255,255,255,.24)}
+    .btn.primary{background:linear-gradient(180deg,var(--brand),#597bf5);border-color:transparent;color:#0b1020}
+    .section{margin:44px 0}
+    .section h2{font-size:1.35rem;margin:0 0 16px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+    .card{grid-column:span 12;padding:20px;border-radius:20px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));box-shadow:var(--shadow)}
     @media(min-width:720px){.card{grid-column:span 6}}
     @media(min-width:1024px){.card{grid-column:span 4}}
-    .card h3 { margin:0 0 8px; font-size:1.05rem }
-    .card p { margin:0 0 14px; color:var(--muted); min-height:60px }
-    .tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px }
-    .chip {
-      font-size:.8rem;
-      padding:6px 10px;
-      border-radius:999px;
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.08);
-    }
-    .actions { display:flex; gap:10px; flex-wrap:wrap }
-    .link {
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);
-    }
-    .link:hover { border-color:rgba(255,255,255,.24) }
-    footer {
-      margin:48px 0 12px;
-      color:var(--muted);
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      justify-content:space-between;
-      align-items:center;
-    }
-    .social { display:flex; gap:10px }
-    .social a {
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(255,255,255,.04);
-    }
-    .credit { font-size:.85rem }
-    a:focus-visible, button:focus-visible {
-      outline:3px solid var(--ring);
-      outline-offset:3px;
-      border-radius:12px;
-    }
+    .card h3{margin:0 0 8px;font-size:1.05rem}
+    .card p{margin:0 0 14px;color:var(--muted);min-height:60px}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+    .chip{font-size:.8rem;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)}
+    .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .link{padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
+    .link:hover{border-color:rgba(255,255,255,.24)}
+    footer{margin:48px 0 12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center}
+    .social{display:flex;gap:10px}
+    .social a{padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04)}
+    .credit{font-size:.85rem}
+    a:focus-visible,button:focus-visible{outline:3px solid var(--ring);outline-offset:3px;border-radius:12px}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
       <div class="logo">
-        <div class="avatar" style="background-image:url('./miriam-photo.jpg');" aria-hidden="true"></div>
+        <div class="avatar" aria-hidden="true"></div>
         <div>
           <div class="name">Miriam Agbaragu</div>
           <div class="tag">Data Science & Analytics</div>
@@ -201,29 +83,25 @@
     </header>
 
     <section class="hero" aria-label="intro">
-      <div class="hero-content">
-        <img src="./miriam-photo.jpg" alt="Miriam Agbaragu" class="hero-photo">
-        <div class="hero-text">
-          <h1>Turning messy data into useful decisions.</h1>
-          <p>Transitioning into Data Science & Business Analytics. Open to work, internships, and collaborations.</p>
-          <div class="badges">
-            <span class="badge">PGD Data Science & Analytics — University of Texas at Austin (2025)</span>
-            <span class="badge">Based in Dubai, UAE</span>
-          </div>
-          <div class="cta">
-            <a class="btn primary" href="#projects">View Capstones</a>
-            <a class="btn" href="./Miriam-Agbaragu-Resume.pdf" target="_blank" rel="noopener">Download Résumé</a>
-          </div>
-        </div>
+      <h1>Turning messy data into useful decisions.</h1>
+      <p>Transitioning into Data Science & Business Analytics. Open to work, internships, and collaborations.</p>
+      <div class="badges">
+        <span class="badge">PGD Data Science & Analytics — University of Texas at Austin (2025)</span>
+        <span class="badge">Based in Dubai, UAE</span>
+      </div>
+      <div class="cta">
+        <a class="btn primary" href="#projects">View Capstones</a>
+        <a class="btn" href="./Miriam-Agbaragu-Resume.pdf" target="_blank" rel="noopener">Download Résumé</a>
       </div>
     </section>
 
-    <!-- Projects -->
+    <!-- Projects, Skills, Contact, Footer remain unchanged -->
+
     <section id="projects" class="section" aria-label="projects">
       <h2>Capstone Projects</h2>
       <div class="grid">
         <article class="card">
-          <h3>ReCell: Dynamic Pricing for Used Phones</h3>
+          <h3>Dynamic Pricing for Used Phones</h3>
           <p>Built a model to predict market-aligned prices for used smartphones using feature engineering, regularization, and tree ensembles.</p>
           <div class="tags">
             <span class="chip">Python</span><span class="chip">XGBoost</span><span class="chip">Feature Engineering</span><span class="chip">MLOps-ready</span>
@@ -234,7 +112,7 @@
         </article>
 
         <article class="card">
-          <h3>Food Aggregator: FoodHub Order Analysis</h3>
+          <h3>FoodHub Order Analysis</h3>
           <p>Exploratory analysis of order patterns to identify levers for higher AOV, repeat purchase, and churn reduction.</p>
           <div class="tags">
             <span class="chip">Pandas</span><span class="chip">EDA</span><span class="chip">Cohorts</span><span class="chip">SQL</span>
@@ -251,41 +129,18 @@
             <span class="chip">Scikit-learn</span><span class="chip">Gradient Boosting</span><span class="chip">Imbalanced Data</span><span class="chip">Evaluation</span>
           </div>
           <div class="actions">
-            <a class="link" href="./hackathon.html" target="_blank" rel="noopener">🌐 Open Project</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3>Restuarant: Predict Annual Turnover</h3>
-          <p>The goal of this problem is to predict the Annual Turnover of a restaurant based on the variables provided in the data set.</p>
-          <div class="tags">
-            <span class="chip">Scikit-learn</span><span class="chip">Gradient Boosting</span><span class="chip">Imbalanced Data</span><span class="chip">Evaluation</span>
-          </div>
-          <div class="actions">
             <a class="link" href="./inn-hotels-cancel-prediction.html" target="_blank" rel="noopener">🌐 Open Project</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3>E-News Express: Determine the effectiveness of the new landing page.</h3>
-          <p>I explored the data and performed a statistical analysis to determine the effectiveness of the new landing page in gathering new subscribers for the news portal</p>
-          <div class="tags">
-            <span class="chip">Linear Regression</span><span class="chip">EDA</span><span class="chip">Business Insights and Recommendations</span><span class="chip">Evaluation</span>
-          </div>
-          <div class="actions">
-            <a class="link" href="./ENews.html" target="_blank" rel="noopener">🌐 Open Project</a>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- Skills -->
     <section id="skills" class="section" aria-label="skills">
       <h2>Skills</h2>
       <div class="grid">
         <div class="card">
           <h3>Data</h3>
-          <p>Python (pandas, numpy), SQL, Power Bi, data cleaning, feature engineering, EDA, visualization (matplotlib, plotly).</p>
+          <p>Python (pandas, numpy), SQL, data cleaning, feature engineering, EDA, visualization (matplotlib, plotly).</p>
         </div>
         <div class="card">
           <h3>ML</h3>
@@ -293,18 +148,17 @@
         </div>
         <div class="card">
           <h3>Tools</h3>
-          <p>GitHub, Jupyter, Google Colab, Excel/Sheets, basic MLOps hygiene.</p>
+          <p>Git & GitHub, Jupyter, Google Colab, VS Code, Excel/Sheets, basic MLOps hygiene.</p>
         </div>
       </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact" class="section" aria-label="contact">
       <h2>Contact</h2>
       <div class="grid">
         <div class="card" style="grid-column:span 12">
           <div class="actions">
-            <a class="link" href="mailto:miriamagbaragu@gmail.com">📧 Email</a>
+            <a class="link" href="mailto:miriam.agbaragu@example.com">📧 Email</a>
             <a class="link" href="https://www.linkedin.com/in/miriam-agbaragu/" target="_blank" rel="noopener">🔗 LinkedIn</a>
             <a class="link" href="https://github.com/miriam-agbaragu" target="_blank" rel="noopener">🐙 GitHub</a>
           </div>
